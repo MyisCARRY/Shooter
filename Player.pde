@@ -2,11 +2,12 @@ class Player{
   int speed = 5;
   int hp = 100;
   int shield = 0;
-  int x = width/2;
-  int y = height/2;
+  float x = width/2;
+  float y = height/2;
   int xVelocity = 0;
   int yVelocity = 0;
   float angle=0;
+  Guns gun = new Guns();
   
   void move(){
       x += xVelocity * speed;
@@ -36,5 +37,17 @@ class Player{
       angle = (mouseY - y)/( mouseX - x);
       angle = atan(angle);
     }
+  }
+  
+  float getX(){
+    return this.x;
+  }
+  
+  float getY(){
+    return this.y;
+  }
+  
+  float getAngle(){
+    return this.angle;
   }
 }
