@@ -1,17 +1,17 @@
 class Zombie{
- int speed = 1;
- int hp = 100;
- int size = 40;
- int shield = 0;
- int attackPower = 0;
- int attackSpeed = 0;
- int x;
- int y;
+ float speed = 1;
+ float hp = 100;
+ float size = 40;
+ float shield = 0;
+ float attackPower = 0;
+ float attackSpeed = 0;
+ float x;
+ float y;
  float angle = 0;
  
  Zombie(){
-   int h=height-size/2;
-   int w=width-size/2;
+   float h=height-size/2;
+   float w=width-size/2;
    int pom = (int)random(0,3+1);
 
    if(pom==0){
@@ -56,4 +56,21 @@ class Zombie{
  void atack(){
    
  }
+ 
+ void setHp(float hp){
+  this.hp = hp; 
+ }
+ 
+  float getx(){
+   return this.x;
+  }
+   
+  float gety(){
+   return this.y;
+  }
+  
+  float getHp(){
+   return this.hp;
+  }
+  
 }
