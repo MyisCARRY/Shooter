@@ -1,25 +1,22 @@
+int numberZombie=10;
 Player guy;
-ArrayList<Bullet> bullets = new ArrayList<Bullet>();
-ArrayList<Bullet> bulletsToDelete = new ArrayList<Bullet>();
-
+Zombie[] z = new Zombie[numberZombie];
 void setup(){
   size(1280, 800);
   guy = new Player();
+  for(int i=0;i<numberZombie;i++){
+      z[i] = new Zombie();
+  }
 }
 
 void draw(){
   background(0);
   guy.show();
   guy.move();
-  
-  for(Bullet b:bullets){
-    b.update();
-    if( b.outOfRange() ){
-      bulletsToDelete.add(b);
-    }
+  for(int i=0;i<numberZombie;i++){
+    z[i].show();
+    z[i].move(guy.x, guy.y); 
   }
-  
-  bullets.removeAll(bulletsToDelete);
 }
 
 void keyPressed(){
@@ -54,19 +51,4 @@ void keyReleased(){
           guy.setXVelocity(0);
           break;
       }
-}
-
-void mouseClicked(){
-  float x = guy.getX();
-  float y = guy.getY();
-  float angle = guy.getAngle();
-  float speed = guy.gun.getBulletSpeed();
-  float dx = mouseX - x;
-  float dy = mouseY - y;
-  float len = sqrt(pow(dx, 2) + pow(dy, 2));
-  if(len == 0) len = 0.0000001;
-  float vx = dx/len * speed;
-  float vy = dy/len * speed;
-  
-  bullets.add( new Bullet(x, y, vx, vy, angle) );
 }
