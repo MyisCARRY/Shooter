@@ -1,17 +1,26 @@
 Player guy;
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 ArrayList<Bullet> bulletsToDelete = new ArrayList<Bullet>();
-
+Zombie z1;
+ArrayList<Zombie> zombies = new ArrayList<Zombie>();
+int numberOfZombies=10;
 void setup(){
   size(1280, 800);
   guy = new Player();
+  z1 = new Zombie();
+  for(int i=0;i<numberOfZombies;i++){
+   zombies.add(new Zombie()); 
+  }
 }
 
 void draw(){
   background(0);
   guy.show();
   guy.move();
-  
+  for(Zombie z:zombies){
+    z.show();
+    z.move();
+    }
   for(Bullet b:bullets){
     b.update();
     if( b.outOfRange() ){
@@ -55,7 +64,6 @@ void keyReleased(){
           break;
       }
 }
-
 void mouseClicked(){
   float x = guy.getX();
   float y = guy.getY();
