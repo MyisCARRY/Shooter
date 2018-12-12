@@ -1,17 +1,19 @@
 Player guy;
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 ArrayList<Bullet> bulletsToDelete = new ArrayList<Bullet>();
-
+Steering steeringZombies;
 void setup(){
-  size(1280, 800);
+  size(1000, 600);
   guy = new Player();
+  steeringZombies = new Steering();
+  steeringZombies.addZombie();
 }
 
 void draw(){
   background(0);
   guy.show();
-  guy.move();
-  
+  guy.move(); 
+  steeringZombies.update();
   for(Bullet b:bullets){
     b.update();
     if( b.outOfRange() ){
@@ -55,7 +57,6 @@ void keyReleased(){
           break;
       }
 }
-
 void mouseClicked(){
   float x = guy.getX();
   float y = guy.getY();
