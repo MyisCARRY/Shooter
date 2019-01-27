@@ -4,13 +4,17 @@ class Bullet{
   float velX;
   float velY;
   float angle;
+  float damage;
+  int xsize = 20;
+  int ysize = 10;
   
-  Bullet(float a, float b, float vx, float vy, float ang){
-    x = a;
-    y = b;
-    velX = vx;
-    velY = vy;
-    angle = ang;
+  Bullet(float a, float b, float vx, float vy, float ang, float d){
+    this.x = a;
+    this.y = b;
+    this.velX = vx;
+    this.velY = vy;
+    this.angle = ang;
+    this.damage = d;
   }
   
   void move(){
@@ -23,7 +27,7 @@ class Bullet{
     translate(x, y);
     rotate(angle);
     rectMode(CENTER);
-    rect(0, 0, 20, 10);
+    rect(0, 0, xsize, ysize);
     popMatrix();
   }
   
@@ -37,5 +41,18 @@ class Bullet{
       return true;
     }
     else return false;
+  }
+  
+  float getX() {
+    return this.x;
+  }
+  float getY() {
+    return this.y;
+  }
+  int getXsize() {
+    return this.xsize;
+  }
+  int getYsize() {
+    return this.ysize;
   }
 }
